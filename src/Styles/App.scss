@@ -1,5 +1,16 @@
+// Estilos generales
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+h1, h2, h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(54, 54, 54);
+}
+
+// Importaciones de otros componentes
+@import './reproductor';
+@import './cancion';
+

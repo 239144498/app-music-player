@@ -1,0 +1,43 @@
+.contenedor-reproductor {
+    // background-color: lightpink; 
+
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .tiempo-cancion {
+        // background-color: palevioletred;
+
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        input {
+            width: 100%;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+
+        p {
+            padding: 1rem;
+        }
+    }
+
+    .botonera-reproductor {
+        // background-color: plum;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+
+        svg {
+            cursor: pointer;
+        }
+    }
+
+} 
