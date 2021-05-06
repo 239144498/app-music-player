@@ -10,12 +10,20 @@ const App = () => {
   // State
   const [canciones, setCanciones] = useState( chillHop() );
   const [cancionActual, setCancionActual] = useState( canciones[0] );
+  const [estaSonando, setEstaSonando] = useState(false);
 
   return (
     <div className="app">
       <h1>Reproductor Chill</h1>
-      <CancionSonando cancion={cancionActual} />
-      <Reproductor />
+      <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
+      <Reproductor 
+        cancionActual={cancionActual} 
+        setCancionActual={setCancionActual}
+        canciones={canciones}
+        setCanciones={setCanciones} 
+        estaSonando={estaSonando}
+        setEstaSonando={setEstaSonando}       
+      />
     </div>
   );
 }

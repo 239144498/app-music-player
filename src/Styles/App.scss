@@ -8,6 +8,12 @@
 h1, h2, h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(54, 54, 54);
+    cursor: default;
+}
+
+.no-selecionable {
+    user-select: none;
+    pointer-events: none;
 }
 
 // Importaciones de otros componentes
