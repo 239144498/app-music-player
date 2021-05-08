@@ -5,9 +5,12 @@
     box-sizing: border-box;
 }
 
+$color-negro: #3d3d3d;
+$color-rojo: #a14d4d;
+
 h1, h2, h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(54, 54, 54);
+    color: $color-negro;
     cursor: default;
 }
 
@@ -19,4 +22,3 @@ h1, h2, h3 {
 // Importaciones de otros componentes
 @import './reproductor';
 @import './cancion';
-

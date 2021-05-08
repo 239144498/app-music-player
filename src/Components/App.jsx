@@ -28,4 +28,8 @@ const App = () => {
   );
 }
 
+    // ++ State o variable 'reproduciendo' para que el disco note cuando girar.
+	// -- transiciones o transformaciones en las presiones de boton.
+	// -- variables de colores de texto y fondo para "modo oscuro".
+
 export default App;
