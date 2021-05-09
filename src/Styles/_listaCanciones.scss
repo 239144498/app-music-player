@@ -18,24 +18,27 @@
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
-  cursor: pointer;
+  cursor: pointer; 
   
   &:hover {
-    background-color: linen;
+    background-color: rgb(239, 230, 250);
   }
-
+  
   img {
     width: 30%;
   }
 
   .detalles-cancion {
     padding-left: 1rem;
-
+    
     h3 {
       font-size: 1rem;
+      cursor: pointer;
     }
+    
     h4{
       font-size: .8rem;
+      cursor: pointer;
     }
   }
 }
@@ -54,7 +57,12 @@
  
 // Color de barra
 ::-webkit-scrollbar-thumb {
-  background: #c2c2c2; 
+  background: #c2c2c2;
+  border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 // Color de barra en hover

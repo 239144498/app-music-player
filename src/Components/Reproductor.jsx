@@ -27,26 +27,24 @@ const Reproductor = (props) => {
   const manejoBtnAdelante = () => {
     setIndiceCancion( indiceCancion + 1 );
     props.setCancionActual( props.canciones[indiceCancion] );
-    console.log(indiceCancion);
   }
 
   const manejoBotonAtras = () => {
     if(indiceCancion > 0) {
       setIndiceCancion( indiceCancion - 1 );
       props.setCancionActual( props.canciones[indiceCancion] );
-      console.log(indiceCancion);
     }
   }
 
   const manejoDragTiempo = evento => {
     const tiempoActual = evento.target.value;
-    setInfoCancion({...infoCancion, currentTime: tiempoActual});
+    setInfoCancion( {...infoCancion, currentTime: tiempoActual} );
     audioRef.current.currentTime = tiempoActual;
   }
   
   const manejoCambioTiempo = evento => {
     const {currentTime, duration} = evento.target;
-    setInfoCancion({...setInfoCancion, currentTime, duration})
+    setInfoCancion( {...setInfoCancion, currentTime, duration} );
   }
 
   const formatearTiempo = tiempo => {
@@ -56,7 +54,7 @@ const Reproductor = (props) => {
   return ( 
     <div className="contenedor-reproductor">
       <div className="tiempo-cancion">
-        <p className="no-selecionable">{formatearTiempo(infoCancion.currentTime)}</p>
+        <p className="no-selecionable">{formatearTiempo(infoCancion.currentTime)} </p> {/*Tiempo inicio y duracion*/}
         <input 
           type="range" 
           min={0} 
@@ -66,7 +64,7 @@ const Reproductor = (props) => {
           name="control-tiempo" 
           id="control-tiempo" 
         />
-        <p className="no-selecionable">{formatearTiempo(infoCancion.duration)}</p>
+        <p className="no-selecionable">{formatearTiempo(infoCancion.duration)} </p> {/*Tiempo total*/}
       </div>
       <div className="botonera-reproductor">
         <FontAwesomeIcon 

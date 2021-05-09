@@ -14,7 +14,6 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* <h1>Reproductor Chill</h1> */}
       <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
       <Reproductor 
         cancionActual={cancionActual} 
@@ -24,7 +23,7 @@ const App = () => {
         estaSonando={estaSonando}
         setEstaSonando={setEstaSonando}
       />
-      <ListaCanciones canciones={canciones} cancionActual={cancionActual} />
+      <ListaCanciones canciones={canciones} cancionActual={cancionActual} setCancionActual={setCancionActual} />
     </div>
   );
 }

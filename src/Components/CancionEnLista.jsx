@@ -1,6 +1,9 @@
-const CancionEnLista = ({cancion, cancionActual}) => {
+const CancionEnLista = ({cancion, canciones, cancionActual, setCancionActual}) => {
+  
+  const manejoClickLista = () => setCancionActual(cancion);
+  
   return (  
-    <div className="cancion-en-lista">
+    <div className="cancion-en-lista" onClick={manejoClickLista}>
       <img className="no-selecionable" src={cancion.portada} alt="Portada del disco" />
       <div className="detalles-cancion">
         <h3>{cancion.nombre}</h3>
@@ -9,5 +12,5 @@ const CancionEnLista = ({cancion, cancionActual}) => {
     </div>
   );
 }
-// height="40px" width="40px"
+
 export default CancionEnLista;
