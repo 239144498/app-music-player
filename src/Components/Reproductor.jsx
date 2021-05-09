@@ -1,38 +1,35 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const Reproductor = (props) => {
-  //Referencias
-  const audioRef = useRef(null);
+const Reproductor = (
+  {audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
+    estaSonando, setEstaSonando, infoCancion, setInfoCancion}) => {
 
   //State
   const [indiceCancion, setIndiceCancion] = useState(0);
-  const [infoCancion, setInfoCancion] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
+
 
   // Handlerers
   const manejoBtnPlay = () => {
-    if( !props.estaSonando ) 
+    if( !estaSonando ) 
       audioRef.current.play();
     else 
       audioRef.current.pause();
     
-    props.setEstaSonando( !props.estaSonando );
+    setEstaSonando( !estaSonando );
   }
 
   const manejoBtnAdelante = () => {
     setIndiceCancion( indiceCancion + 1 );
-    props.setCancionActual( props.canciones[indiceCancion] );
+    setCancionActual( canciones[indiceCancion] ); 
   }
 
-  const manejoBotonAtras = () => {
+  const manejoBtnAtras = () => {
     if(indiceCancion > 0) {
       setIndiceCancion( indiceCancion - 1 );
-      props.setCancionActual( props.canciones[indiceCancion] );
+      setCancionActual( canciones[indiceCancion] );
     }
   }
 
@@ -42,11 +39,7 @@ const Reproductor = (props) => {
     audioRef.current.currentTime = tiempoActual;
   }
   
-  const manejoCambioTiempo = evento => {
-    const {currentTime, duration} = evento.target;
-    setInfoCancion( {...setInfoCancion, currentTime, duration} );
-  }
-
+  // Dar formato 00:00 al tiempo cada vez que se actualiza el tiempo actual de la cancion
   const formatearTiempo = tiempo => {
     return Math.floor(tiempo / 60) + ':' + ('0' + Math.floor(tiempo % 60)).slice(-2); // Claramente esto no se me ocurrió a mi..
   }
@@ -71,12 +64,12 @@ const Reproductor = (props) => {
           className="btn-anterior" 
           size="2x" 
           icon={faChevronLeft} 
-          onClick={manejoBotonAtras}
+          onClick={manejoBtnAtras}
         />
         <FontAwesomeIcon 
           className="btn-play" 
           size="2x" 
-          icon={props.estaSonando ? faPause : faPlay} 
+          icon={estaSonando ? faPause : faPlay} 
           onClick={manejoBtnPlay}
         />
         <FontAwesomeIcon 
@@ -86,12 +79,6 @@ const Reproductor = (props) => {
           onClick={manejoBtnAdelante}
         />
       </div>
-      <audio 
-        onTimeUpdate={manejoCambioTiempo} 
-        onLoadedMetadata={manejoCambioTiempo}
-        ref={audioRef} 
-        src={props.cancionActual.audio} 
-      />
     </div>
   );
 }
