@@ -1,0 +1,63 @@
+.lista-canciones {
+  // background-color: lightpink;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  box-shadow: 2px 2px 30px #cfc8c8;
+  overflow-y: scroll;
+
+  h2 {
+    padding: 1rem 2rem;
+  }
+}
+
+.cancion-en-lista {
+  // background-color: lightslategrey;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: linen;
+  }
+
+  img {
+    width: 30%;
+  }
+
+  .detalles-cancion {
+    padding-left: 1rem;
+
+    h3 {
+      font-size: 1rem;
+    }
+    h4{
+      font-size: .8rem;
+    }
+  }
+}
+
+// Barra de scroll vertical
+
+// Ancho
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+// Color de fondo
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+// Color de barra
+::-webkit-scrollbar-thumb {
+  background: #c2c2c2; 
+}
+
+// Color de barra en hover
+::-webkit-scrollbar-thumb:hover {
+  background: #b4b4b4; 
+}

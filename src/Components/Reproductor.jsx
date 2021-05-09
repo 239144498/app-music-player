@@ -4,55 +4,53 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const Reproductor = (props) => {
-  //Ref
+  //Referencias
   const audioRef = useRef(null);
-  // const progresoRef = useRef(null);
 
   //State
   const [indiceCancion, setIndiceCancion] = useState(0);
-  const [iconoPlayPausa, setIconoPlayPausa] = useState(faPlay);
   const [infoCancion, setInfoCancion] = useState({
-    currentTime: null,
-    duration: null,
+    currentTime: 0,
+    duration: 0,
   });
-//   const [estaReproduciendo, setEstaReproduciendo] = useState(false); // PARA EL DISCO GIRATORIO
 
   // Handlerers
-  function manejoBtnPlay() {
-    if( !props.estaSonando ) {
-      setIconoPlayPausa(faPause);
+  const manejoBtnPlay = () => {
+    if( !props.estaSonando ) 
       audioRef.current.play();
-    } else {
-      setIconoPlayPausa(faPlay);
+    else 
       audioRef.current.pause();
-    }
+    
     props.setEstaSonando( !props.estaSonando );
   }
 
-  function manejoBtnAdelante() {
+  const manejoBtnAdelante = () => {
     setIndiceCancion( indiceCancion + 1 );
     props.setCancionActual( props.canciones[indiceCancion] );
-    // console.log('indice', indiceCancion);
+    console.log(indiceCancion);
   }
 
-  // function manejoBotonAtras() {
+  const manejoBotonAtras = () => {
+    if(indiceCancion > 0) {
+      setIndiceCancion( indiceCancion - 1 );
+      props.setCancionActual( props.canciones[indiceCancion] );
+      console.log(indiceCancion);
+    }
+  }
 
-  // }
-
-  function manejoDragTiempo(evento) {
+  const manejoDragTiempo = evento => {
     const tiempoActual = evento.target.value;
     setInfoCancion({...infoCancion, currentTime: tiempoActual});
     audioRef.current.currentTime = tiempoActual;
   }
   
-  function manejoCambioTiempo(evento) {
+  const manejoCambioTiempo = evento => {
     const {currentTime, duration} = evento.target;
     setInfoCancion({...setInfoCancion, currentTime, duration})
-    // console.log(infoCancion);
   }
 
   const formatearTiempo = tiempo => {
-    return Math.floor(tiempo / 60) + ':' + ('0' + Math.floor(tiempo % 60)).slice(-2); // Claramente no se me ocurrió a mi esto..
+    return Math.floor(tiempo / 60) + ':' + ('0' + Math.floor(tiempo % 60)).slice(-2); // Claramente esto no se me ocurrió a mi..
   }
 
   return ( 
@@ -61,7 +59,6 @@ const Reproductor = (props) => {
         <p className="no-selecionable">{formatearTiempo(infoCancion.currentTime)}</p>
         <input 
           type="range" 
-          // ref={progresoRef} 
           min={0} 
           max={infoCancion.duration}
           value={infoCancion.currentTime}
@@ -76,12 +73,12 @@ const Reproductor = (props) => {
           className="btn-anterior" 
           size="2x" 
           icon={faChevronLeft} 
-          // onClick={}
+          onClick={manejoBotonAtras}
         />
         <FontAwesomeIcon 
           className="btn-play" 
           size="2x" 
-          icon={iconoPlayPausa} 
+          icon={props.estaSonando ? faPause : faPlay} 
           onClick={manejoBtnPlay}
         />
         <FontAwesomeIcon 
@@ -98,7 +95,7 @@ const Reproductor = (props) => {
         src={props.cancionActual.audio} 
       />
     </div>
-    );
+  );
 }
 
 export default Reproductor;

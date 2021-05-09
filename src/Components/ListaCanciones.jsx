@@ -1,9 +1,15 @@
+import CancionEnLista from './CancionEnLista';
 
-const ListaCanciones = () => {
+const ListaCanciones = ({canciones}) => {
     return ( 
-        <div>
-            
+      <div className="lista-canciones">
+        <h2>Lista de canciones</h2>
+        <div className="canciones-en-lista">
+          {canciones.map( cancion => { 
+            return <CancionEnLista cancion={cancion} />
+          })}
         </div>
+      </div>
      );
 }
  
