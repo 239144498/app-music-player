@@ -40,6 +40,7 @@ const App = () => {
       />
       <ListaCanciones 
         canciones={canciones} 
+        setCanciones={setCanciones}
         cancionActual={cancionActual} 
         setCancionActual={setCancionActual} 
         audioRef={audioRef}
