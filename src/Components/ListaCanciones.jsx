@@ -1,10 +1,10 @@
 import CancionEnLista from './CancionEnLista';
 
-const ListaCanciones = ({canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando}) => {
+const ListaCanciones = ({canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando, estadoLista}) => {
 
   
   return ( 
-    <div className="lista-canciones">
+    <div className={`lista-canciones ${estadoLista && 'lista-activa'}`}>
       <h2>Lista de canciones</h2>
       <div className="canciones-en-lista">
         {canciones.map( cancion => { 

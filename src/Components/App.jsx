@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import ListaCanciones from './ListaCanciones';
 import CancionSonando from './CancionSonando';
 import Reproductor from './Reproductor';
+import Header from './Header';
 import '../Styles/App.scss'; // Contiene estilos importados de todos los componentes
 import chillHop from '../cancionesChillHop'; 
 
@@ -14,6 +15,7 @@ const App = () => {
     currentTime: 0,
     duration: 0,
   });
+  const [estadoLista, setEstadoLista] = useState(false);
 
   // Handlers
   const manejoCambioTiempo = evento => {
@@ -26,6 +28,7 @@ const App = () => {
   
   return (
     <div className="app">
+      <Header estadoLista={estadoLista} setEstadoLista={setEstadoLista} />
       <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
       <Reproductor 
         audioRef={audioRef}
@@ -45,6 +48,7 @@ const App = () => {
         setCancionActual={setCancionActual} 
         audioRef={audioRef}
         estaSonando={estaSonando}
+        estadoLista={estadoLista}
       />
       <audio 
         onTimeUpdate={manejoCambioTiempo} 

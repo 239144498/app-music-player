@@ -51,7 +51,7 @@ const Reproductor = (
         <input 
           type="range" 
           min={0} 
-          max={infoCancion.duration}
+          max={infoCancion.duration || 0}
           value={infoCancion.currentTime}
           onChange={manejoDragTiempo}
           name="control-tiempo" 
