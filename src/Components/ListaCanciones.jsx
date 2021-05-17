@@ -1,7 +1,6 @@
 import CancionEnLista from './CancionEnLista';
 
 const ListaCanciones = ({canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando, estadoLista}) => {
-
   
   return ( 
     <div className={`lista-canciones ${estadoLista && 'lista-activa'}`}>

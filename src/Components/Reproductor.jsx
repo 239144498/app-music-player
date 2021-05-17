@@ -1,5 +1,5 @@
-import { useState } from 'react';
-
+import { useEffect } from 'react';
+import { chequearContinuar } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,29 +7,43 @@ const Reproductor = (
   {audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
     estaSonando, setEstaSonando, infoCancion, setInfoCancion}) => {
 
-  //State
-  const [indiceCancion, setIndiceCancion] = useState(0);
-
+  // useeffect
+  useEffect( () => {
+    const nuevasCanciones = canciones.map( song => {
+      if(song.id === cancionActual.id) 
+        return {
+          ...song,
+          reproduciendo: true
+        }
+      else 
+        return {
+          ...song,
+          reproduciendo: false
+        }
+    });
+    setCanciones(nuevasCanciones);
+    chequearContinuar(estaSonando, audioRef);
+  }, [cancionActual] );
 
   // Handlerers
   const manejoBtnPlay = () => {
-    if( !estaSonando ) 
-      audioRef.current.play();
-    else 
+    if( estaSonando ) 
       audioRef.current.pause();
+    else 
+      audioRef.current.play();
     
     setEstaSonando( !estaSonando );
   }
-
-  const manejoBtnAdelante = () => {
-    setIndiceCancion( indiceCancion + 1 );
-    setCancionActual( canciones[indiceCancion] ); 
-  }
-
-  const manejoBtnAtras = () => {
-    if(indiceCancion > 0) {
-      setIndiceCancion( indiceCancion - 1 );
-      setCancionActual( canciones[indiceCancion] );
+  
+  const manejoCambioCancion = direccion => {
+    let indiceActual = canciones.findIndex( song => song.id === cancionActual.id );
+    if (direccion === 'adelante') 
+      setCancionActual( canciones[(indiceActual + 1) % canciones.length] );
+    else if (direccion === 'atras') {
+      if ( (indiceActual - 1) % canciones.length === -1 )  // Si llega al tope de -1
+        setCancionActual( canciones[canciones.length - 1] ); // va de la primera cancion a la ultima
+      else
+        setCancionActual( canciones[(indiceActual - 1) % canciones.length] );
     }
   }
 
@@ -57,14 +71,14 @@ const Reproductor = (
           name="control-tiempo" 
           id="control-tiempo" 
         />
-        <p className="no-selecionable">{formatearTiempo(infoCancion.duration)} </p> {/*Tiempo total*/}
+        <p className="no-selecionable">{infoCancion.duration ? formatearTiempo(infoCancion.duration) : '0:00'} </p> {/*Tiempo total*/}
       </div>
       <div className="botonera-reproductor">
         <FontAwesomeIcon 
           className="btn-anterior" 
           size="2x" 
           icon={faChevronLeft} 
-          onClick={manejoBtnAtras}
+          onClick={ () => manejoCambioCancion('atras') }
         />
         <FontAwesomeIcon 
           className="btn-play" 
@@ -76,7 +90,7 @@ const Reproductor = (
           className="btn-siguiente" 
           size="2x" 
           icon={faChevronRight} 
-          onClick={manejoBtnAdelante}
+          onClick={ () => manejoCambioCancion('adelante') }
         />
       </div>
     </div>

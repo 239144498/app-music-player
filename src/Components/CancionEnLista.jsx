@@ -1,7 +1,8 @@
+import { chequearContinuar } from '../util';
+
 const CancionEnLista = ({cancion, canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando}) => {
-  
-  // ACA ESTA ROTO!!!
-  
+   
+  // Handler
   const manejoEleccionLista = () => {
     setCancionActual(cancion);
 
@@ -17,17 +18,13 @@ const CancionEnLista = ({cancion, canciones, setCanciones, cancionActual, setCan
           ...song,
           reproduciendo: false
         }
-    });    
+    });
 
     // Setea la nueva lista con el atributo 'Reproduciendo' actualizado
     setCanciones(nuevasCanciones);
 
     // Se fija si está reproduciendo
-    if(estaSonando){
-      const promesaReproducir = audioRef.current.play();
-      if(promesaReproducir !== undefined)
-        promesaReproducir.then( audio => audioRef.current.play());
-    }
+    chequearContinuar(estaSonando, audioRef);
   }
   
   return (  

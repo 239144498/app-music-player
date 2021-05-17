@@ -70,7 +70,7 @@ function cancionesChillHop() {
       nombre: "Backyard Puddles",
       portada: "https://chillhop.com/wp-content/uploads/2020/09/c209a7df7b9bc133dfff73ce86ebc3c57c2b73dd-1024x1024.jpg", 
       artista: "Sleepy Fish",
-      audio: "https://mp3.chillhop.com/serve.php/?mp3=10264",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=10032",
       colores: ["#F1E2C5", "#3886A6"],
       reproduciendo: false
     },
@@ -83,6 +83,15 @@ function cancionesChillHop() {
       colores: ["#D56F84", "#7E427E"],
       reproduciendo: false
     },  
+    {
+      id: uuidv4(),
+      nombre: "Vintage",
+      portada: "https://chillhop.com/wp-content/uploads/2021/04/cb0cc6270d7f2e1bb13e44e8832bd5c9b2a61080-1024x1024.jpg", 
+      artista: "Evil Needle",
+      audio: "https://mp3.chillhop.com/serve.php/?mp3=17088",
+      colores: ["#EB8556", "#EBC77D"],
+      reproduciendo: false
+    },   
   ];
 }
 
