@@ -1,4 +1,4 @@
-import { chequearContinuar } from '../util';
+// import { chequearContinuar } from '../util';
 
 const CancionEnLista = ({cancion, canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando}) => {
    
@@ -24,7 +24,7 @@ const CancionEnLista = ({cancion, canciones, setCanciones, cancionActual, setCan
     setCanciones(nuevasCanciones);
 
     // Se fija si está reproduciendo
-    chequearContinuar(estaSonando, audioRef);
+    // chequearContinuar(estaSonando, audioRef);
   }
   
   return (  

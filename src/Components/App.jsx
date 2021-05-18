@@ -22,6 +22,12 @@ const App = () => {
   const manejoCambioTiempo = evento => {
     const {currentTime, duration} = evento.target;
     setInfoCancion( {...setInfoCancion, currentTime, duration} );
+    if (estaSonando) audioRef.current.play();
+  }
+
+  const manejoFinCancion = () => {
+    let indiceActual = canciones.findIndex( song => song.id === cancionActual.id );
+    setCancionActual( canciones[(indiceActual + 1) % canciones.length] );
   }
 
   //Referencias
@@ -56,6 +62,7 @@ const App = () => {
         onLoadedMetadata={manejoCambioTiempo}
         ref={audioRef} 
         src={cancionActual.audio} 
+        onEnded={manejoFinCancion}
       />
     </div>
   );

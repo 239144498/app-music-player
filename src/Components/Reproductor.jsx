@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { chequearContinuar } from '../util';
+// import { chequearContinuar } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +7,7 @@ const Reproductor = (
   {audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
     estaSonando, setEstaSonando, infoCancion, setInfoCancion}) => {
 
-  // useeffect
+  // useEffect
   useEffect( () => {
     const nuevasCanciones = canciones.map( song => {
       if(song.id === cancionActual.id) 
@@ -22,19 +22,19 @@ const Reproductor = (
         }
     });
     setCanciones(nuevasCanciones);
-    chequearContinuar(estaSonando, audioRef);
+    // chequearContinuar(estaSonando, audioRef);
+    if (estaSonando) audioRef.current.play();
   }, [cancionActual] );
 
-  // Handlerers
+  // Handlerers 
   const manejoBtnPlay = () => {
-    if( estaSonando ) 
-      audioRef.current.pause();
-    else 
-      audioRef.current.play();
+    if ( estaSonando ) audioRef.current.pause();
+    else audioRef.current.play();
     
     setEstaSonando( !estaSonando );
   }
   
+  // MEJOR CAMBIAR A ASYNC AWAIT ?
   const manejoCambioCancion = direccion => {
     let indiceActual = canciones.findIndex( song => song.id === cancionActual.id );
     if (direccion === 'adelante') 
@@ -45,6 +45,7 @@ const Reproductor = (
       else
         setCancionActual( canciones[(indiceActual - 1) % canciones.length] );
     }
+    // if (estaSonando) audioRef.current.play();
   }
 
   const manejoDragTiempo = evento => {
