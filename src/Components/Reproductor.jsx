@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const Reproductor = (
-  {audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
-    estaSonando, setEstaSonando, infoCancion, setInfoCancion}) => {
+  { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
+    estaSonando, setEstaSonando, infoCancion, setInfoCancion }) => {
 
   // useEffect
   useEffect( () => {
@@ -22,7 +22,6 @@ const Reproductor = (
         }
     });
     setCanciones(nuevasCanciones);
-    // chequearContinuar(estaSonando, audioRef);
     if (estaSonando) audioRef.current.play();
   }, [cancionActual] );
 
@@ -34,7 +33,6 @@ const Reproductor = (
     setEstaSonando( !estaSonando );
   }
   
-  // MEJOR CAMBIAR A ASYNC AWAIT ?
   const manejoCambioCancion = direccion => {
     let indiceActual = canciones.findIndex( song => song.id === cancionActual.id );
     if (direccion === 'adelante') 
@@ -60,7 +58,7 @@ const Reproductor = (
   }
 
   return ( 
-    <div className="contenedor-reproductor">
+    <div className='contenedor-reproductor'>
       <div className="tiempo-cancion">
         <p className="no-selecionable">{formatearTiempo(infoCancion.currentTime)} </p> {/*Tiempo inicio y duracion*/}
         <input 

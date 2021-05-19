@@ -1,6 +1,6 @@
 import CancionEnLista from './CancionEnLista';
 
-const ListaCanciones = ({canciones, setCanciones, cancionActual, setCancionActual, audioRef, estaSonando, estadoLista}) => {
+const ListaCanciones = ({ canciones, setCanciones, setCancionActual, estadoLista }) => {
   
   return ( 
     <div className={`lista-canciones ${estadoLista && 'lista-activa'}`}>
@@ -13,8 +13,6 @@ const ListaCanciones = ({canciones, setCanciones, cancionActual, setCancionActua
             canciones={canciones}
             setCanciones={setCanciones}
             setCancionActual={setCancionActual} 
-            audioRef={audioRef}
-            estaSonando={estaSonando}
           />
         })}
       </div>

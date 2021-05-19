@@ -34,7 +34,7 @@ const App = () => {
   const audioRef = useRef(null);
   
   return (
-    <div className="app">
+    <div className={`app ${estadoLista && 'lista-abierta'}`}>
       <Header estadoLista={estadoLista} setEstadoLista={setEstadoLista} />
       <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
       <Reproductor 
@@ -53,8 +53,6 @@ const App = () => {
         setCanciones={setCanciones}
         cancionActual={cancionActual} 
         setCancionActual={setCancionActual} 
-        audioRef={audioRef}
-        estaSonando={estaSonando}
         estadoLista={estadoLista}
       />
       <audio 
@@ -68,7 +66,7 @@ const App = () => {
   );
 }
 
-    // ++ State o variable 'reproduciendo' para que el disco note cuando girar.
+  // Hacer girar el disco
 	// -- transiciones o transformaciones en las presiones de boton.
 	// -- variables de colores de texto y fondo para "modo oscuro".
 

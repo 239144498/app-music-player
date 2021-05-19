@@ -6,7 +6,7 @@ const Header = ( { estadoLista, setEstadoLista } ) => {
   return (
     <nav>
       <h1>Musica Chill</h1>
-      <button onClick={ () => setEstadoLista(!estadoLista) }>
+      <button className={estadoLista && "boton-activado"} onClick={ () => setEstadoLista(!estadoLista) }>
         Lista
         <FontAwesomeIcon icon={faMusic} />
       </button>

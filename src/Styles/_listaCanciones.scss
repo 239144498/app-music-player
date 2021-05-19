@@ -1,9 +1,9 @@
 .lista-canciones {
-  //background-color: lightpink;
   position: fixed;
   top: 0;
   left: 0;
-  width: 20rem;
+  // width: 20rem;
+  width: 20%;
   height: 100%;
   background-color: white;
   box-shadow: 2px 2px 30px #cfc8c8;
@@ -21,7 +21,7 @@
   opacity: 0;
 
   h2 {
-    padding: 1rem 2rem;
+    padding: 1.3rem 2rem;
   }
 }
 
@@ -35,7 +35,6 @@
 }
 
 .cancion-en-lista {
-  // background-color: lightslategrey;
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
@@ -69,11 +68,10 @@
   
   &:hover {
     background-color: $color-seleccionado-lista;
-    color: blue;
   }
 }
 
-// Barra de scroll vertical
+// BARRA DE SCROLL VERTICAL
 
 // Ancho
 ::-webkit-scrollbar {
