@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-// import { chequearContinuar } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,25 +5,7 @@ const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
     estaSonando, setEstaSonando, infoCancion, setInfoCancion }) => {
 
-  // useEffect
-  useEffect( () => {
-    const nuevasCanciones = canciones.map( song => {
-      if(song.id === cancionActual.id) 
-        return {
-          ...song,
-          reproduciendo: true
-        }
-      else 
-        return {
-          ...song,
-          reproduciendo: false
-        }
-    });
-    setCanciones(nuevasCanciones);
-    if (estaSonando) audioRef.current.play();
-  }, [cancionActual] );
-
-  // Handlerers 
+  // Handlers 
   const manejoBtnPlay = () => {
     if ( estaSonando ) audioRef.current.pause();
     else audioRef.current.play();
@@ -35,15 +15,36 @@ const Reproductor = (
   
   const manejoCambioCancion = direccion => {
     let indiceActual = canciones.findIndex( song => song.id === cancionActual.id );
-    if (direccion === 'adelante') 
+    if (direccion === 'adelante') { 
       setCancionActual( canciones[(indiceActual + 1) % canciones.length] );
-    else if (direccion === 'atras') {
-      if ( (indiceActual - 1) % canciones.length === -1 )  // Si llega al tope de -1
+      manejoCambio( canciones[(indiceActual + 1) % canciones.length] )
+    } else if (direccion === 'atras') {
+      if ( (indiceActual - 1) % canciones.length === -1 ) {  // Si llega al tope de -1
         setCancionActual( canciones[canciones.length - 1] ); // va de la primera cancion a la ultima
-      else
+        manejoCambio( canciones[canciones.length - 1] );
+      } else {
         setCancionActual( canciones[(indiceActual - 1) % canciones.length] );
+        manejoCambio( canciones[(indiceActual - 1) % canciones.length] );
+      }
     }
     // if (estaSonando) audioRef.current.play();
+  }
+
+  const manejoCambio = (cancionACambiar) => {
+    const nuevasCanciones = canciones.map( song => {
+    if(song.id === cancionACambiar.id) 
+      return {
+        ...song,
+        reproduciendo: true
+      }
+    else 
+      return {
+        ...song,
+        reproduciendo: false
+      }
+    });
+    setCanciones(nuevasCanciones);
+    if (estaSonando) audioRef.current.play();
   }
 
   const manejoDragTiempo = evento => {

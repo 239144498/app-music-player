@@ -34,7 +34,7 @@ const App = () => {
   const audioRef = useRef(null);
   
   return (
-    <div className={`app ${estadoLista && 'lista-abierta'}`}>
+    <div className={`app ${estadoLista && "lista-abierta"}`}>
       <Header estadoLista={estadoLista} setEstadoLista={setEstadoLista} />
       <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
       <Reproductor 
