@@ -71,29 +71,52 @@
   }
 }
 
+// MEDIA QUERIES
+@media screen and (max-width: 1250px) {
+  .lista-canciones {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .lista-canciones {
+    width: 100%;
+    
+    h2 {
+      position: sticky;
+      top: 0;
+      left: 0;
+      padding: 1.5rem 2rem;
+      width: 100%;
+      background-color: white;
+    }
+  }
+}
+
 // BARRA DE SCROLL VERTICAL
 
-// Ancho
-::-webkit-scrollbar {
-  width: 7px;
-}
+  // Ancho
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
 
-// Color de fondo
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-// Color de barra
-::-webkit-scrollbar-thumb {
-  background: #c2c2c2;
-  border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-}
+  // Color de fondo
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  // Color de barra
+  ::-webkit-scrollbar-thumb {
+    background: #c2c2c2;
+    border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+  }
 
-// Color de barra en hover
-::-webkit-scrollbar-thumb:hover {
-  background: #b4b4b4; 
-}
+  // Color de barra en hover
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b4b4b4; 
+  }
+

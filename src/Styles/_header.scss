@@ -32,3 +32,15 @@ nav {
   }
 }
 
+// MEDIA QUERIES
+@media screen and (max-width: 870px) {
+  nav button {
+    z-index: 1;
+  }
+}
+
+// @media screen and (max-width: 720px) {
+//   nav button {
+//     z-index: 1;
+//   }
+// }
