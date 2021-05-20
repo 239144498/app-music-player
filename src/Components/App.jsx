@@ -17,6 +17,7 @@ const App = () => {
     duration: 0,
   });
   const [estadoLista, setEstadoLista] = useState(false); // Si el menu lista lateral esta abierto o no
+  const [modoOscuro, setModoOscuro] = useState(false);
 
   // Handlers
   const manejoCambioTiempo = evento => {
@@ -35,8 +36,13 @@ const App = () => {
   
   return (
     <div className={`app ${estadoLista && "lista-abierta"}`}>
-      <Header estadoLista={estadoLista} setEstadoLista={setEstadoLista} />
-      <CancionSonando cancion={cancionActual} estaSonando={estaSonando} />
+      <Header 
+        estadoLista={estadoLista} 
+        setEstadoLista={setEstadoLista} 
+        modoOscuro={modoOscuro} 
+        setModoOscuro={setModoOscuro}
+      />
+      <CancionSonando cancion={cancionActual} estaSonando={estaSonando} modoOscuro={modoOscuro} />
       <Reproductor 
         audioRef={audioRef}
         cancionActual={cancionActual} 
@@ -47,6 +53,7 @@ const App = () => {
         setEstaSonando={setEstaSonando}
         infoCancion={infoCancion}
         setInfoCancion={setInfoCancion}
+        modoOscuro={modoOscuro}
       />
       <ListaCanciones 
         canciones={canciones} 
@@ -54,6 +61,7 @@ const App = () => {
         cancionActual={cancionActual} 
         setCancionActual={setCancionActual} 
         estadoLista={estadoLista}
+        modoOscuro={modoOscuro}
       />
       <audio 
         onTimeUpdate={manejoCambioTiempo} 
@@ -65,9 +73,5 @@ const App = () => {
     </div>
   );
 }
-
-  // Hacer girar el disco
-	// -- transiciones o transformaciones en las presiones de boton.
-	// -- variables de colores de texto y fondo para "modo oscuro".
 
 export default App;

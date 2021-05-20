@@ -50,6 +50,17 @@
     }
   }
 
+// MODO OSCURO
+.cancion-oscura {
+  background-color: $color-fondo-oscuro;
+  h2, h3 {
+    color: white;
+  }
+  img {
+    box-shadow: 3px 3px 10px 3px #2f2f2f;
+  }
+}
+
 // MEDIA QUERIES
 @media screen and (max-width: 1250px) {
   .contenedor-cancion { 

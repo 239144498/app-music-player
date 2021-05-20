@@ -3,7 +3,7 @@ import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/fre
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
-    estaSonando, setEstaSonando, infoCancion, setInfoCancion }) => {
+    estaSonando, setEstaSonando, infoCancion, setInfoCancion, modoOscuro }) => {
 
   // Handlers 
   const manejoBtnPlay = () => {
@@ -59,7 +59,7 @@ const Reproductor = (
   }
 
   return ( 
-    <div className='contenedor-reproductor'>
+    <div className={`contenedor-reproductor ${modoOscuro && 'reproductor-oscuro'}`}>
       <div className="tiempo-cancion">
         <p className="no-selecionable">{formatearTiempo(infoCancion.currentTime)} </p> {/*Tiempo inicio y duracion*/}
         <input 

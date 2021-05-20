@@ -75,6 +75,28 @@
   }
 }
 
+// MODO OSCURO
+.lista-oscura {
+  background-color: $color-fondo-oscuro;
+  box-shadow: 2px 2px 30px #1f1c1c;
+  
+  h2, h3, h4 {
+    color: white;
+  }
+  
+  .cancion-en-lista:hover {
+    background-color: $color-hover-lista-oscura;
+  }
+  
+  .seleccionada {
+    background-color: $color-seleccionado-lista-oscura;
+    
+    &:hover {
+      background-color: $color-seleccionado-lista-oscura;
+    }
+  }
+}
+
 // MEDIA QUERIES
 @media screen and (max-width: 1250px) {
   .lista-canciones {
@@ -85,7 +107,7 @@
 @media screen and (max-width: 870px) {
   .lista-canciones {
     width: 100%;
-    
+
     h2 {
       position: sticky;
       top: 0;
@@ -95,8 +117,12 @@
       background-color: white;
     }
   }
-}
 
+  .lista-oscura h2 {
+      background-color: $color-fondo-oscuro;
+    }
+  }
+  
 // BARRA DE SCROLL VERTICAL
 
   // Ancho

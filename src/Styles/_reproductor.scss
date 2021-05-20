@@ -36,6 +36,16 @@
   }
 } 
 
+// MODO OSCURO 
+.reproductor-oscuro {
+  background-color: $color-fondo-oscuro;
+  color: white;
+  
+  .botonera-reproductor svg {
+    color: white;
+  }
+}
+
 // MEDIA QUERIES
 @media screen and (max-width: 1250px) {
   .contenedor-reproductor {

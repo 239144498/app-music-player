@@ -1,15 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 
-const Header = ( { estadoLista, setEstadoLista } ) => {
+const Header = ( { estadoLista, setEstadoLista, modoOscuro, setModoOscuro } ) => {
 
   return (
-    <nav>
+    <nav className={modoOscuro ? 'header-oscuro' : ''}>
       <h1>Musica Chill</h1>
-      <button className={estadoLista ? "boton-activado" : ''} onClick={ () => setEstadoLista(!estadoLista) }>
-        Lista
-        <FontAwesomeIcon icon={faMusic} />
-      </button>
+      <div className="botones">
+        <button className={estadoLista ? "boton-activado" : ''} onClick={ ()=> setEstadoLista(!estadoLista) }>
+          Lista
+          <FontAwesomeIcon icon={faMusic} />
+        </button>
+        <button className="boton-oscuro" onClick={ ()=> setModoOscuro(!modoOscuro) }>
+          {modoOscuro ? 'Modo   claro' : 'Modo oscuro'}
+        </button>
+      </div>
     </nav>
   );
 }

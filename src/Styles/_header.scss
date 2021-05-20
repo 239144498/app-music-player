@@ -4,6 +4,14 @@ nav {
   align-items: center;
   justify-content: space-around;
 
+  .botones {
+    display: flex;
+
+    .boton-oscuro {
+      margin-left: 10px;
+    }
+  }
+
   button {
     background: none;
     border: solid 1.5px #585858;
@@ -25,10 +33,22 @@ nav {
       color: white;
     }
 
-
     svg {
       margin-left: 7px;
     }
+  }
+}
+
+.boton-activado {
+  background-color: #585858;
+  color: white;
+}
+
+// MODO OSCURO
+.header-oscuro {
+  background-color: $color-fondo-oscuro;
+  h1, button {
+    color: white;
   }
 }
 
@@ -38,9 +58,3 @@ nav {
     z-index: 1;
   }
 }
-
-// @media screen and (max-width: 720px) {
-//   nav button {
-//     z-index: 1;
-//   }
-// }
