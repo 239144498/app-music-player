@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useCallback } from 'react';
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
@@ -60,39 +59,11 @@ const Reproductor = (
   }
 
   const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    if (!isNaN(newVolume) && newVolume >= 0 && newVolume <= 1) {
-      setVolumen(newVolume);
-      audioRef.current.volume = newVolume;
-    }
+    const newVolume = e.target.value;
+    setVolumen(newVolume);
+    audioRef.current.volume = newVolume;
   };
 
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === 'ArrowRight') {
-      setVolumen(prevVolume => {
-        const newVolume = Math.min(1, parseFloat(prevVolume) + 0.1);
-        audioRef.current.volume = newVolume;
-        return newVolume;
-      });
-    } else if (e.key === 'ArrowLeft') {
-      setVolumen(prevVolume => {
-        const newVolume = Math.max(0, parseFloat(prevVolume) - 0.1);
-        audioRef.current.volume = newVolume;
-        return newVolume;
-      });
-    }
-  }, [setVolumen, audioRef]);
-
-  useEffect(() => {
-    audioRef.current.volume = volumen;
-  }, [volumen, audioRef]);
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
 
   return ( 
     <div className={`contenedor-reproductor ${modoOscuro && 'reproductor-oscuro'}`}>
