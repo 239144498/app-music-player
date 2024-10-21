@@ -3,7 +3,7 @@ import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/fre
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
-    estaSonando, setEstaSonando, infoCancion, setInfoCancion, modoOscuro, setVolumen }) => {
+    estaSonando, setEstaSonando, infoCancion, setInfoCancion, modoOscuro, volumen, setVolumen }) => {
 
   // Handlers 
   const manejoBtnPlay = () => {
@@ -76,7 +76,6 @@ const Reproductor = (
           onChange={manejoDragTiempo}
           name="control-tiempo" 
           id="control-tiempo" 
-          onChange={handleVolumeChange} 
         />
         <p className="no-selecionable">{infoCancion.duration ? formatearTiempo(infoCancion.duration) : '0:00'} </p> {/*Tiempo total*/}
       </div>
@@ -98,6 +97,19 @@ const Reproductor = (
           size="2x" 
           icon={faChevronRight} 
           onClick={ () => manejoCambioCancion('adelante') }
+        />
+      </div>
+      <div className="control-volumen">
+        <label htmlFor="control-volumen">Volumen</label>
+        <input 
+          type="range" 
+          min="0" 
+          max="1" 
+          step="0.01" 
+          value={volumen} 
+          onChange={handleVolumeChange} 
+          name="control-volumen" 
+          id="control-volumen" 
         />
       </div>
     </div>
