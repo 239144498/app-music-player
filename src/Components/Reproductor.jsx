@@ -3,7 +3,7 @@ import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/fre
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
-    estaSonando, setEstaSonando, infoCancion, setInfoCancion, modoOscuro }) => {
+    estaSonando, setEstaSonando, infoCancion, setInfoCancion, modoOscuro, setVolumen }) => {
 
   // Handlers 
   const manejoBtnPlay = () => {
@@ -58,6 +58,12 @@ const Reproductor = (
     return Math.floor(tiempo / 60) + ':' + ('0' + Math.floor(tiempo % 60)).slice(-2); // Claramente esto no se me ocurrió a mi..
   }
 
+  const handleVolumeChange = (e) => {
+    const newVolume = e.target.value;
+    setVolumen(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+
   return ( 
     <div className={`contenedor-reproductor ${modoOscuro && 'reproductor-oscuro'}`}>
       <div className="tiempo-cancion">
@@ -70,6 +76,7 @@ const Reproductor = (
           onChange={manejoDragTiempo}
           name="control-tiempo" 
           id="control-tiempo" 
+          onChange={handleVolumeChange} 
         />
         <p className="no-selecionable">{infoCancion.duration ? formatearTiempo(infoCancion.duration) : '0:00'} </p> {/*Tiempo total*/}
       </div>
