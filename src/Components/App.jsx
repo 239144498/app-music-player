@@ -18,8 +18,7 @@ const App = () => {
   });
   const [estadoLista, setEstadoLista] = useState(false); // Si el menu lista lateral esta abierto o no
   const [modoOscuro, setModoOscuro] = useState(false);
-  const [volumen, setVolumen] = useState(0.66); // 默认音量为 1（最大音量）
-  
+
   // Handlers
   const manejoCambioTiempo = evento => {
     const {currentTime, duration} = evento.target;
@@ -55,8 +54,6 @@ const App = () => {
         infoCancion={infoCancion}
         setInfoCancion={setInfoCancion}
         modoOscuro={modoOscuro}
-        volumen={volumen}
-        setVolumen={setVolumen}
       />
       <ListaCanciones 
         canciones={canciones} 
