@@ -18,6 +18,7 @@ const App = () => {
   });
   const [estadoLista, setEstadoLista] = useState(false); // Si el menu lista lateral esta abierto o no
   const [modoOscuro, setModoOscuro] = useState(false);
+  const [volumen, setVolumen] = useState(1); // 添加音量状态，默认为 1（最大音量）
 
   // Handlers
   const manejoCambioTiempo = evento => {
@@ -54,6 +55,8 @@ const App = () => {
         infoCancion={infoCancion}
         setInfoCancion={setInfoCancion}
         modoOscuro={modoOscuro}
+        volumen={volumen}
+        setVolumen={setVolumen}
       />
       <ListaCanciones 
         canciones={canciones} 
@@ -69,6 +72,7 @@ const App = () => {
         ref={audioRef} 
         src={cancionActual.audio} 
         onEnded={manejoFinCancion}
+        volume={volumen} // 设置音频元素的音量
       />
     </div>
   );
