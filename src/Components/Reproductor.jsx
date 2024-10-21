@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faChevronLeft, faChevronRight, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
@@ -100,7 +100,9 @@ const Reproductor = (
         />
       </div>
       <div className="control-volumen">
-        <label htmlFor="control-volumen">Volumen</label>
+        <label htmlFor="control-volumen">
+          <FontAwesomeIcon icon={faVolumeUp} /> {/* 使用音量图标 */}
+        </label>
         <input 
           type="range" 
           min="0" 
