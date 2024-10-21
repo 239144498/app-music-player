@@ -5,7 +5,7 @@ const Header = ( { estadoLista, setEstadoLista, modoOscuro, setModoOscuro } ) =>
 
   return (
     <nav className={modoOscuro ? 'header-oscuro' : ''}>
-      <h1>Musica Chill</h1>
+      <h1>Music Player</h1>
       <div className="botones">
         <button className={estadoLista ? "boton-activado" : ''} onClick={ ()=> setEstadoLista(!estadoLista) }>
           Lista
