@@ -8,7 +8,7 @@ const Header = ( { estadoLista, setEstadoLista, modoOscuro, setModoOscuro } ) =>
       <h1>Music Player</h1>
       <div className="botones">
         <button className={estadoLista ? "boton-activado" : ''} onClick={ ()=> setEstadoLista(!estadoLista) }>
-          Lista
+          列表
           <FontAwesomeIcon icon={faMusic} />
         </button>
         <button className="boton-oscuro" onClick={ ()=> setModoOscuro(!modoOscuro) }>
