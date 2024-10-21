@@ -4,7 +4,7 @@ const ListaCanciones = ({ canciones, setCanciones, setCancionActual, estadoLista
   
   return ( 
     <div className={`lista-canciones ${estadoLista && 'lista-activa'} ${modoOscuro && 'lista-oscura'}`}>
-      <h2>Lista de canciones</h2>
+      <h2>音乐列表</h2>
       <div className="canciones-en-lista">
         {canciones.map( cancion => { 
           return <CancionEnLista 
