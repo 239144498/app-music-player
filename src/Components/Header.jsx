@@ -12,7 +12,7 @@ const Header = ( { estadoLista, setEstadoLista, modoOscuro, setModoOscuro } ) =>
           <FontAwesomeIcon icon={faMusic} />
         </button>
         <button className="boton-oscuro" onClick={ ()=> setModoOscuro(!modoOscuro) }>
-          {modoOscuro ? 'Modo   claro' : 'Modo oscuro'}
+          {modoOscuro ? '光' : '影'}
         </button>
       </div>
     </nav>
