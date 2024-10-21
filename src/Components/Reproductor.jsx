@@ -75,14 +75,14 @@ const Reproductor = (
 
   useEffect(() => {
     audioRef.current.volume = volumen;
-  }, [volumen]);
+  }, [volumen, audioRef]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return ( 
     <div className={`contenedor-reproductor ${modoOscuro && 'reproductor-oscuro'}`}>
