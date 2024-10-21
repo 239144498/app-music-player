@@ -17,7 +17,7 @@ function cancionesChillHop() {
       artista: "随机2",
       audio: "https://music.naiher.me/random2",
       colores: ["#FDD0BD", "#564E89"],
-      reproduciendo: true
+      reproduciendo: false
     } 
   ];
 }
