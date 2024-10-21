@@ -7,7 +7,7 @@ function cancionesChillHop() {
       nombre: "随机1",
       portada: "https://img.icons8.com/fluency/48/music.png", 
       artista: "随机1",
-      audio: "https://music.naiher.me/random1",
+      audio: "https://music-api.naiher.me/random1",
       colores: ["#FDD0BD", "#564E89"],
       reproduciendo: true
     },{
@@ -15,7 +15,7 @@ function cancionesChillHop() {
       nombre: "随机2",
       portada: "https://img.icons8.com/fluency/48/music.png", 
       artista: "随机2",
-      audio: "https://music.naiher.me/random2",
+      audio: "https://music-api.naiher.me/random2",
       colores: ["#FDD0BD", "#564E89"],
       reproduciendo: false
     } 
