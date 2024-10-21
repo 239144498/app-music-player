@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
@@ -64,6 +65,25 @@ const Reproductor = (
     audioRef.current.volume = newVolume;
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowRight') {
+      setVolumen(prevVolume => Math.min(1, parseFloat(prevVolume) + 0.1));
+    } else if (e.key === 'ArrowLeft') {
+      setVolumen(prevVolume => Math.max(0, parseFloat(prevVolume) - 0.1));
+    }
+  };
+
+  useEffect(() => {
+    audioRef.current.volume = volumen;
+  }, [volumen]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return ( 
     <div className={`contenedor-reproductor ${modoOscuro && 'reproductor-oscuro'}`}>
       <div className="tiempo-cancion">
@@ -99,10 +119,8 @@ const Reproductor = (
           onClick={ () => manejoCambioCancion('adelante') }
         />
       </div>
-      <div className="control-volumen">
-        <label htmlFor="control-volumen">
-          <FontAwesomeIcon icon={faVolumeUp} /> {/* 使用音量图标 */}
-        </label>
+      <div className="control-volumen" style={{ display: 'flex', alignItems: 'center' }}>
+        <FontAwesomeIcon icon={faVolumeUp} style={{ marginRight: '10px' }} /> {/* 使用音量图标 */}
         <input 
           type="range" 
           min="0" 
@@ -112,6 +130,7 @@ const Reproductor = (
           onChange={handleVolumeChange} 
           name="control-volumen" 
           id="control-volumen" 
+          style={{ flex: 1 }}
         />
       </div>
     </div>
