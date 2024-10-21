@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faChevronLeft, faChevronRight, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 const Reproductor = (
   { audioRef, cancionActual, setCancionActual, canciones, setCanciones, 
@@ -65,13 +65,13 @@ const Reproductor = (
     audioRef.current.volume = newVolume;
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = useCallback((e) => {
     if (e.key === 'ArrowRight') {
       setVolumen(prevVolume => Math.min(1, parseFloat(prevVolume) + 0.1));
     } else if (e.key === 'ArrowLeft') {
       setVolumen(prevVolume => Math.max(0, parseFloat(prevVolume) - 0.1));
     }
-  };
+  }, [setVolumen]);
 
   useEffect(() => {
     audioRef.current.volume = volumen;
