@@ -59,9 +59,11 @@ const Reproductor = (
   }
 
   const handleVolumeChange = (e) => {
-    const newVolume = e.target.value;
+    const newVolume = parseFloat(e.target.value);
     setVolumen(newVolume);
-    audioRef.current.volume = newVolume;
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
   };
 
 
@@ -101,7 +103,7 @@ const Reproductor = (
         />
       </div>
       <div className="control-volumen" style={{ display: 'flex', alignItems: 'center' }}>
-        <FontAwesomeIcon icon={faVolumeUp} style={{ marginRight: '10px' }} /> {/* 使用音量图标 */}
+        <FontAwesomeIcon icon={faVolumeUp} style={{ marginRight: '10px' }} />
         <input 
           type="range" 
           min="0" 
