@@ -13,7 +13,7 @@ interface Cancion {
 }
 
 function useCancionesChillHop() {
-  const [canciones, setCanciones] = useState<Cancion[]>([]);
+  const [canciones, setCanciones] = useState([]);
 
   useEffect(() => {
     const fetchCanciones = async () => {
